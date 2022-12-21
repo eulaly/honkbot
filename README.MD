@@ -1,3 +1,9 @@
+# Honkbot
+Honkbot is a simple Discord bot for sending gifs in chat.
+It also tracks whether a user owes another game.
+
+Honkbot is written with [interactions.py](https://discord-py-slash-command.readthedocs.io/en/latest/), a Python Discord API.
+
 ### Python Setup
 This project requires Python >=3.10.
 1. Build virtual env: `python -m venv venv`
