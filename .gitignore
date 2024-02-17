@@ -1,0 +1,7 @@
+secrets*
+venv/
+assets/
+__pycache__
+.env
+.dockerfile
+*.org
