@@ -1,0 +1,11 @@
+# syntax=docker/dockerfile:1
+FROM python:3.11-alpine
+WORKDIR /app
+RUN adduser -D appuser
+USER appuser
+COPY requirements.txt requirements.txt
+RUN python3 -m venv venv\
+    && venv/bin/pip install --no-cache-dir -r requirements.txt 
+COPY honk.py honk.py
+ENV api_token=""
+CMD [ "venv/bin/python3", "./honk.py"]

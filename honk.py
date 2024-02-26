@@ -25,7 +25,9 @@ async def honk(ctx: interactions.SlashContext, user=None):
     if user:
         msg = user.mention + ' ' + msg
     else: 
-        await ctx.send('@everyone')
+        # msg = user.mention()
+        # await ctx.send('@everyone')
+        await ctx.channel.mention()
     await ctx.send(msg)
 
 
@@ -140,15 +142,17 @@ async def tab(ctx: interactions.SlashContext, user=None):
 )
 async def howcool(ctx: interactions.SlashContext, user=None):
     await ctx.send("it's time for a COOL OFF!!")
-    if user:
+    if not user:
+        coolFactor = 1*round(random()*100,4)
+        msg = f'{ctx.author.mention} lost **{coolFactor}** cool!'
+    elif user == bot.user:
+        cc = 100.0000
+    else:
         ac, cc = coolcalc(n=2)
         if ac > cc:
             msg = f'{ctx.author.mention} ({ac} cool) is TOO COOL for {user.mention} ({cc} cool)'
         else:
             msg = f'{user.mention} ({cc} cool) is TOO COOL for {ctx.author.mention} ({ac} cool)'
-    else:
-        coolFactor = 1*round(random()*100,4)
-        msg = f'{ctx.author.mention} lost **{coolFactor}** cool!'
     cool_factor[ctx.author.username] = ac
     cool_factor[user.username] = cc
     await ctx.send(msg)
